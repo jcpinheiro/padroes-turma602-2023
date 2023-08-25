@@ -1,5 +1,7 @@
 package edu.ifma.turma602.roteiro01;
 
+import java.util.ArrayList;
+
 /*
   Nossa classe Divida deve armazenar o credor (para quem a empresa está devendo),
   o CNPJ desse credor, o valor total da dívida e o seu valor já pago
@@ -10,6 +12,7 @@ public class Divida {
     private String cnpjCredor;
     private double total;
     private double valorPago;
+
 
     public Divida(double total) {
         this.total = total;
