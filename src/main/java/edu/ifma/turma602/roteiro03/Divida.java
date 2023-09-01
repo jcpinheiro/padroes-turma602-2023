@@ -1,8 +1,4 @@
-package edu.ifma.turma602.roteiro02;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+package edu.ifma.turma602.roteiro03;
 
 /*
   Nossa classe Divida deve armazenar o credor (para quem a empresa está devendo),
@@ -23,6 +19,11 @@ public class Divida {
     public void registra(Pagamento pagamento) {
         historicoPagamentos.registra(pagamento);
     }
+
+    public boolean jaFoiRealizadoO(Pagamento pagamento) {
+        return this.historicoPagamentos.tem(pagamento );
+    }
+
 
     public String getCredor() {
         return credor;
