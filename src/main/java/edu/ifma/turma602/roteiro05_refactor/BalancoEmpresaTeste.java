@@ -1,4 +1,4 @@
-package edu.ifma.turma602.roteiro05;
+package edu.ifma.turma602.roteiro05_refactor;
 
 
 import java.time.LocalDate;
@@ -11,7 +11,7 @@ public class BalancoEmpresaTeste {
 
         Divida divida = new Divida(1000);
         divida.setCredor("Banco XYZ");
-        divida.setCnpjCredor(new CNPJ("82.761.345/0001-22" ));
+        divida.setDocumentoCredor(new CNPJ("82.761.345/0001-22" ) );
 
         balancoEmpresa.registraDivida(divida );
         System.out.println(balancoEmpresa );
@@ -20,7 +20,7 @@ public class BalancoEmpresaTeste {
         pagamento.setValor(200);
         pagamento.setData(LocalDate.now());
 
-        balancoEmpresa.pagaDivida(new CNPJ("82.761.345/0001-22"), pagamento );
+        balancoEmpresa.pagaDivida(new  CNPJ("82.761.345/0001-22" ) , pagamento );
         System.out.println(balancoEmpresa );
 
 

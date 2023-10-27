@@ -1,6 +1,4 @@
-package edu.ifma.turma602.roteiro05;
-
-import java.util.List;
+package edu.ifma.turma602.roteiro05_refactor;
 
 /*
   Nossa classe Divida deve armazenar o credor (para quem a empresa está devendo),
@@ -9,8 +7,8 @@ import java.util.List;
 public class Divida {
 
     private String credor;
-    private CNPJ cnpjCredor;
-    private CPF cpfCredor;
+
+    private Documento documentoCredor;
     private double total;
 
     private String telefone;
@@ -45,26 +43,12 @@ public class Divida {
         this.credor = credor;
     }
 
-    public CNPJ getCnpjCredor() {
-         return cnpjCredor;
+    public Documento getDocumentoCredor() {
+        return documentoCredor;
     }
 
-    public void setCnpjCredor(CNPJ cnpjCredor) {
-        if (cpfCredor == null)
-            this.cnpjCredor = cnpjCredor;
-        else
-            throw new IllegalStateException("Erro! A divida já foi associada a um CNPJ");
-    }
-
-    public CPF getCpfCredor() {
-        return cpfCredor;
-    }
-
-    public void setCpfCredor(CPF cpfCredor) {
-        if (cnpjCredor == null )
-            this.cpfCredor = cpfCredor;
-        else
-            throw new IllegalStateException("Erro! A divida já foi associada a um CPF");
+    public void setDocumentoCredor(Documento documentoCredor) {
+        this.documentoCredor = documentoCredor;
     }
 
     public double getTotal() {
@@ -79,7 +63,7 @@ public class Divida {
     public String toString() {
         return "Divida{" +
                 "credor='" + credor + '\'' +
-                ", cnpjCredor='" + cnpjCredor + '\'' +
+                ", documentoCredor='" + documentoCredor + '\'' +
                 ", total=" + total +
                 ", valorPago=" + historicoPagamentos.getValorPago() +
                 '}';

@@ -1,8 +1,7 @@
-package edu.ifma.turma602.roteiro05;
+package edu.ifma.turma602.roteiro05_refactor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 class Pagamentos  {

@@ -4,21 +4,24 @@ import java.util.HashMap;
 
 public class BalancoEmpresa {
 
-    private HashMap<CNPJ, Divida> dividas = new HashMap<>();
+    private HashMap<CNPJ, Divida> dividasPJ = new HashMap<>();
+    private HashMap<CPF, Divida> dividasPF = new HashMap<>();
 
-//    public void registraDivida(String credor, String cnpjCredor, double total, String telefone ) {
     public void registraDivida(Divida divida ) {
-        /* Divida divida = new Divida(total);
-        divida.setCredor(credor );
-        divida.setCnpjCredor(cnpjCredor );*/
-        dividas.put(divida.getCnpjCredor(), divida );
+
+       if (divida.getCnpjCredor() != null)
+         dividasPJ.put(divida.getCnpjCredor(), divida );
+
+       else if (divida.getCpfCredor() != null )
+           dividasPF.put(divida.getCpfCredor(), divida);
+
+       else
+           throw new IllegalArgumentException("A divida deve está associada a um CPF ou CNPJ");
 
     }
 
-    //public void pagaDivida(String cnpjCredor, double valor, String pagador, LocalDate dataPagamento ) {
-
-    public void pagaDivida(String cnpjCredor, Pagamento pagamento ) {
-        Divida divida = dividas.get(cnpjCredor);
+    public void pagaDivida(CNPJ cnpjCredor, Pagamento pagamento ) {
+        Divida divida = dividasPJ.get(cnpjCredor);
 
         if (divida != null) {
             divida.registra(pagamento );
@@ -28,10 +31,21 @@ public class BalancoEmpresa {
         }
     }
 
+    public void pagaDivida(CPF cpfCredor, Pagamento pagamento ) {
+        Divida divida = dividasPF.get(cpfCredor);
+
+        if (divida != null) {
+            divida.registra(pagamento );
+
+        } else {
+            throw new IllegalArgumentException("O CPF é Invalido!!" );
+        }
+    }
+
     @Override
     public String toString() {
         return "BalancoEmpresa{" +
-                "dividas=" + dividas +
+                "dividas=" + dividasPJ +
                 '}';
     }
 }
